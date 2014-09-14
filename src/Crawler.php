@@ -6,6 +6,6 @@ class Crawler {
     $this->crawler->addContent($body);
   }
   function __call($name, $args) {
-    return $this->crawler->$name($args[0]);
+    return call_user_func_array([$this->crawler, $name], $args);
   }
 }

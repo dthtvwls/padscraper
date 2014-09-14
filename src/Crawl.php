@@ -1,7 +1,7 @@
 <?php
 class Crawl {
   function perform() {
-    $ps = DB::prepare('INSERT INTO listings (code, title, link, date, price, neighborhood, scraped) VALUES (:code, :title, :link, :date, :price, :neighborhood, FALSE)');
+    $ps = DB::prepare('INSERT INTO listings SET scraped=FALSE, code=:code, title=:title, link=:link, date=:date, price=:price, neighborhood=:neighborhood');
 
     array_map(function ($url) use ($ps) {
   
@@ -21,14 +21,13 @@ class Crawl {
             ':neighborhood' => (($n = $node->filter('.l2 > .pnr > small')) && $n->count()) ? $n->text() : null
           ]);
         } catch (Exception $e) {
-          echo $e->getMessage();
-          print_r($ps->errorinfo());
+          Logger::error($e->getMessage(), $ps->errorinfo());
         }
       });
     }, [
       'http://newyork.craigslist.org/nfa/',
       'http://newyork.craigslist.org/roo/',
-      'http://newyork.craigslist.org/sub/',
+      'http://newyork.craigslist.org/sub/'
     ]);
   }
 }

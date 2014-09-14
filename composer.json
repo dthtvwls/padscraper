@@ -3,6 +3,7 @@
     "fivefilters/php-readability": "*",
     "guzzlehttp/guzzle": "*",
     "lstrojny/functional-php": "1.0.*@dev",
+    "monolog/monolog": "*",
     "react/react": "*",
     "symfony/css-selector": "*",
     "symfony/dom-crawler": "*"

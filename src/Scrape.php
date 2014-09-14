@@ -11,15 +11,17 @@ class Scrape {
         $crawler = new Crawler($body);
         $readability = new Readability($body);
 
-        $street = $crawler->filter('.mapAndAttrs > .mapbox > .mapaddress');
-  
+        $street = $crawler->filter('.mapAndAttrs > .mapbox > div.mapaddress');
+        
         $ps->execute([
+          ':id'  => $listing['id'],
+          ':lat' => null,
+          ':lng' => null,
           ':street' => $street->count() ? $street->text() : null,
-          ':description' => $readability->init() ? strip_tags(tidy_parse_string($readability->getContent()->innerHTML, [], 'UTF8')) : null    
+          ':description' => $readability->init() ? trim(strip_tags(tidy_parse_string($readability->getContent()->innerHTML, [], 'UTF8'))) : null    
         ]);
       } catch (Exception $e) {
-        echo $e->getMessage();
-        print_r($statement->errorinfo());
+        Logger::error($e->getMessage(), $ps->errorinfo());
       }
     }
   }
