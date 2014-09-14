@@ -1,4 +1,7 @@
 <?php
+/*
+ * Facade for Symfony's Crawler
+ */
 class Crawler {
   var $crawler;
   function __construct($body) {

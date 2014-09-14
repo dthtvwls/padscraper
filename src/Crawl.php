@@ -1,4 +1,7 @@
 <?php
+/*
+ * Resque-compatible listings crawl task
+ */
 class Crawl {
   function perform() {
     $ps = DB::prepare('INSERT INTO listings SET scraped=FALSE, code=:code, title=:title, link=:link, date=:date, price=:price, neighborhood=:neighborhood');

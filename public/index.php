@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-$q    = DB::query('SELECT title, link, price, location FROM listings WHERE location IS NOT NULL', PDO::FETCH_ASSOC);
+$q    = DB::query('SELECT title, link, price, street FROM listings WHERE street IS NOT NULL', PDO::FETCH_ASSOC);
 $json = json_encode(iterator_to_array($q));
 
 ?>

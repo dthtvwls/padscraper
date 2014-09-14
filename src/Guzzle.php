@@ -1,4 +1,7 @@
 <?php
+/*
+ * Facade for Guzzle client
+ */
 class Guzzle {
   static $client;
   static function __callStatic($name, $args) {

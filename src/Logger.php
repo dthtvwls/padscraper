@@ -1,4 +1,7 @@
 <?php
+/*
+ * Facade for Monolog
+ */
 class Logger {
   static $logger;
   static function __callStatic($name, $args) {

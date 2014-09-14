@@ -1,4 +1,7 @@
 <?php
+/*
+ * Facade for PDO
+ */
 class DB {
   static $connection;
   static function __callStatic($name, $args) {

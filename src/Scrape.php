@@ -1,7 +1,10 @@
 <?php
+/*
+ * Resque-compatible scrape listing task
+ */
 class Scrape {
   function perform() {
-    $q  = DB::query('SELECT id, link FROM listings WHERE scraped != TRUE', PDO::FETCH_ASSOC);
+    $q  = DB::query('SELECT link FROM listings WHERE scraped != TRUE', PDO::FETCH_ASSOC);
     $ps = DB::prepare('UPDATE listings SET scraped=TRUE, street=:street, description=:description, lat=:lat, lng=:lng WHERE link=:link');
 
     Guzzle::sendAll(array_map(function ($listing) {
