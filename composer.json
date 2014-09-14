@@ -1,0 +1,13 @@
+{
+  "require": {
+    "fivefilters/php-readability": "*",
+    "guzzlehttp/guzzle": "*",
+    "lstrojny/functional-php": "1.0.*@dev",
+    "react/react": "*",
+    "symfony/css-selector": "*",
+    "symfony/dom-crawler": "*"
+  },
+  "autoload": {
+    "psr-4": { "": "src/" }
+  }
+}
